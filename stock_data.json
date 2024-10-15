@@ -1,0 +1,58 @@
+{
+    "CurrRate": {
+        "LTP": "408.10",
+        "Chg": "-2.30",
+        "PcChg": "-0.56",
+        "D_Cpricelink": "",
+        "IssueChgVal": "",
+        "IssueChgPC": ""
+    },
+    "Cmpname": {
+        "FullN": "RailTel Corporation of India Ltd",
+        "ShortN": "railtel",
+        "SeriesN": "RailTel Corporation of India Ltd",
+        "SEOUrlEQ": "/stock-share-price/railtel-corporation-of-india-ltd/railtel/543265/",
+        "SEOUrlDR": "/stock-share-price/future-options/derivatives/543265/",
+        "IsNotPropernFIT": "0",
+        "Category": "Listed",
+        "EquityScrips": "543265"
+    },
+    "Header": {
+        "Noticecnt": "1",
+        "PrevClose": "410.40",
+        "Open": "410.45",
+        "High": "411.85",
+        "Low": "406.05",
+        "LTP": "408.10",
+        "DisplayText": "",
+        "Category": "Listed",
+        "PRE_OPEN_NO_BIDS": null,
+        "PRE_OPEN_NO_I_PRICE": null,
+        "PRE_OPEN_I_PRICE": null,
+        "PRE_OPEN_I_PRICE_QTY": null,
+        "PCAS_NO_BIDS": null,
+        "PCAS_INDICATIVE_PRICE": null,
+        "PCAS_INDICATIVE_QTY": null,
+        "PERODIC_CALL_AUCTION": null,
+        "GSMURL": "",
+        "GSMText": "",
+        "Invit": "0",
+        "Ason": "15 Oct 24 | 16:00",
+        "NAVRate": "",
+        "NAVdttm": "",
+        "ASMText": "",
+        "SMSText": "",
+        "IRPText": "",
+        "ASMURL": "",
+        "SMSURL": "https://www.bseindia.com/attention_investors.aspx",
+        "IRPURL": "https://www.bseindia.com/markets/MarketInfo/DispNewNoticesCirculars.aspx?page=20220520-52",
+        "IDB_DisplayText": "",
+        "IsALF": "0",
+        "EMSText": "",
+        "EMSURL": ""
+    },
+    "CompResp": {
+        "compRes": null,
+        "texturl": null
+    }
+}
