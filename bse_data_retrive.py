@@ -2,6 +2,7 @@ import json
 import requests
 import datetime
 import time
+from message_sending import send_message
 
 
 headers = {
@@ -124,7 +125,26 @@ if __name__ == "__main__":
             stock_data = get_stock_data_by_id(data['stock_id'])
 
             print(json.dumps(stock_data, indent=4))
+
+            message_to_be_sent = f"""New Stock Update 
+
+Stock Name : {data['company_name']}
+
+Stock URL : {data['stock_url']}
+
+Current Price : {stock_data['current_price']}
+
+Today's Price Change : {stock_data['todays_price_change']}
+Today's Price Change Percent : {stock_data['todays_price_change_percent']}
+
+Today's Open Price : {stock_data['today_open_price']}
+Today's High Price : {stock_data['today_high_price']}
+Today's Low Price : {stock_data['today_low_price']}
+"""
+
+            send_message(message_to_be_sent)
+
         else:
             print("No new Updates")
-            
+
         time.sleep(2)
