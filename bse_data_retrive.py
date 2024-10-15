@@ -70,6 +70,28 @@ def get_latest_orders_for_company():
 
         response = response.content
 
+def get_industry_by_stock_id(stock_id):
+    url = f"https://api.bseindia.com/BseIndiaAPI/api/ComHeadernew/w?quotetype=EQ&scripcode={stock_id}&seriesid="
+
+    response = requests.get(url=url,headers=headers)
+
+    response = response.json()
+
+    return response['Industry']
+
+def get__52_week_high_low(stock_id):
+    url = f"https://api.bseindia.com/BseIndiaAPI/api/HighLow/w?Type=EQ&flag=C&scripcode={stock_id}"
+
+    response = requests.get(url=url,headers=headers)
+
+    response = response.json()
+
+    week_high_52 = response['Fifty2WkHigh_adj']
+
+    week_low_52 = response['Fifty2WkLow_adj']
+
+    return week_high_52,week_low_52
+
 def get_stock_data_by_id(stock_id):
 
     stock_nse_url = f"https://api.bseindia.com/BseIndiaAPI/api/getScripHeaderData/w?Debtflag=&scripcode={stock_id}&seriesid="
@@ -77,6 +99,8 @@ def get_stock_data_by_id(stock_id):
     response = requests.get(url=stock_nse_url,headers=headers)
 
     response = response.json()
+
+    print(json.dumps(response, indent=4))
 
     current_price = response['CurrRate']['LTP']
 
@@ -90,13 +114,21 @@ def get_stock_data_by_id(stock_id):
 
     today_low_price = response['Header']['Low']
 
+    week_high_52,week_low_52 = get__52_week_high_low(stock_id)
+
+    industry = get_industry_by_stock_id(stock_id)
+
+
     data_to_return = {
         "current_price":current_price,
         "todays_price_change":todays_price_change,
         "todays_price_change_percent":todays_price_change_percent,
         "today_open_price":today_open_price,
         "today_high_price":today_high_price,
-        "today_low_price":today_low_price    
+        "today_low_price":today_low_price,
+        "week_high_52":week_high_52,
+        "week_low_52":week_low_52,
+        "industry":industry
     }
 
 
@@ -140,6 +172,11 @@ Today's Price Change Percent : {stock_data['todays_price_change_percent']}
 Today's Open Price : {stock_data['today_open_price']}
 Today's High Price : {stock_data['today_high_price']}
 Today's Low Price : {stock_data['today_low_price']}
+
+52 Week High Price : {stock_data['week_high_52']}
+52 Week Low Price : {stock_data['week_low_52']}
+
+Industry : {stock_data['industry']}
 """
 
             send_message(message_to_be_sent)
