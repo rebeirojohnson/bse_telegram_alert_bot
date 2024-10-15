@@ -46,7 +46,7 @@ def get_latest_orders_for_company():
     try:
         list_of_stocks = response.json()
         
-        latest_update = list_of_stocks['Table'][0]
+        latest_update = list_of_stocks['Table'][4]
 
         news_id = latest_update['NEWSID']
 
@@ -56,11 +56,19 @@ def get_latest_orders_for_company():
 
         stock_id = latest_update['SCRIP_CD']
 
+        headline = latest_update['HEADLINE']
+
+        more_data = latest_update['MORE']
+        
+        if more_data != "":
+            headline = more_data
+            
         data_to_return = {
             "news_id":news_id,
             "company_name":company_name,
             "stock_url":stock_url,
-            "stock_id":stock_id
+            "stock_id":stock_id,
+            "headline":headline,
         }
 
         return data_to_return
@@ -114,6 +122,8 @@ def get_stock_data_by_id(stock_id):
 
     today_low_price = response['Header']['Low']
 
+
+
     week_high_52,week_low_52 = get__52_week_high_low(stock_id)
 
     industry = get_industry_by_stock_id(stock_id)
@@ -163,6 +173,8 @@ if __name__ == "__main__":
 Stock Name : {data['company_name']}
 
 Stock URL : {data['stock_url']}
+
+Headline : {data['headline']}
 
 Current Price : {stock_data['current_price']}
 
